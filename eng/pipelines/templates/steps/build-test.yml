@@ -83,7 +83,7 @@ steps:
         --toxenv="mypy"
         --disablecov
     env: ${{ parameters.EnvVars }}
-    condition: and(succeededOrFailed(), ${{ parameters.RunMyPy }})
+    condition: ${{ parameters.RunMyPy }}
   
   - template: publish-coverage.yml
     parameters: 
