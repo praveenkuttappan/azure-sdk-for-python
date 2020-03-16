@@ -42,7 +42,7 @@ stages:
 - template: ../../eng/pipelines/templates/stages/archetype-sdk-client.yml
   parameters:
     ServiceDirectory: core
-    TestTimeoutInMinutes: 2
+    TestTimeoutInMinutes: 200
     Artifacts:
     - name: azure_core
       safeName: azurecore
