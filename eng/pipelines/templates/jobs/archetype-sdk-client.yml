@@ -3,7 +3,8 @@ parameters:
   BeforePublishSteps: []
   TestMarkArgument: ''
   BuildTargetingString: 'azure-*'
-  TestTimeoutInMinutes: 0
+  TimeoutInMinutes: 0
+  TestTimeoutInMinutes: ne(variables['TimeoutInMinutes'], 0)
   ToxEnvParallel: '--tenvparallel'
   InjectedPackages: ''
   BuildDocs: true
