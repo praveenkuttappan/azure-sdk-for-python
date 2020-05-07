@@ -175,7 +175,7 @@ jobs:
       - 'Build'
 
     pool:
-      vmImage: 'ubuntu-18.04'
+      vmImage: 'windows-2019'
 
     steps:
     - template: ../steps/run_pylint.yml
