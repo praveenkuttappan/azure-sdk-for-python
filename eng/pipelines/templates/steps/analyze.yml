@@ -25,11 +25,10 @@ steps:
      scriptPath: 'scripts/analyze_deps.py'
      arguments: '--verbose --out "$(Build.ArtifactStagingDirectory)/reports/dependencies.html" --dump "$(Build.ArtifactStagingDirectory)/reports/data.js"'
 
-  - task: PythonScript@0
-    displayName: 'Verify Change Log'
-    inputs:
-     scriptPath: 'scripts/devops_tasks/verify_change_log.py'
-     arguments: '"${{ parameters.BuildTargetingString }}" --service=${{parameters.ServiceDirectory}}'
+  - template: /eng/common/pipelines/templates/steps/verify-changelog.yml
+    parameters:
+      PackageName: ${{artifact.name}}
+      ServiceName: ${{parameters.ServiceDirectory}}
 
     # Using --always-succeed so as not to block the build. Once package
     # target is based on data available per-package the --always-succeed should
