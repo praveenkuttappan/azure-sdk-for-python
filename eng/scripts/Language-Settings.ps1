@@ -17,7 +17,12 @@ function Get-python-PackageInfoFromRepo  ($pkgPath, $serviceDirectory, $pkgName)
     popd
     if (($setupProps -ne $null) -and ($setupProps[0] -eq $pkgName))
     {
-      return [PackageProps]::new($setupProps[0], $setupProps[1], $pkgPath, $serviceDirectory)
+      $sdkType = "data"
+      if ($pkgName -match "-mgmt-")
+      {
+        $sdkType = "management"
+      }
+      return [PackageProps]::new($setupProps[0], $setupProps[1], $pkgPath, $serviceDirectory, $sdkType)
     }
   }
   return $null
